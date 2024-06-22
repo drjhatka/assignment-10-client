@@ -1,8 +1,9 @@
 import { NavLink, Link } from 'react-router-dom'
+import { GiClothJar } from "react-icons/gi";
 function Navbar() {
     return (
 
-        <div className="navbar bg-base-100 border-2 rounded-b-md">
+        <div className="navbar bg-[#cddbcbd2] border-2 rounded-b-md mb-2 pb-2">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -13,7 +14,7 @@ function Navbar() {
                         <li>
                             <a>View Categories</a>
                             <ul className="p-2">
-                                <li><Link>Earthenware</Link></li>
+                                <li><Link >Earthenware</Link></li>
                                 <li><Link>Ceramic</Link></li>
                                 <li><Link>Porcelin</Link></li>
                             </ul>
@@ -22,14 +23,16 @@ function Navbar() {
                         <li><NavLink to='/product-list'>My Product List</NavLink></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <div>
+                    <a className="btn btn-ghost text-xl flex items-center"><GiClothJar className='lg:text-3xl  text-[#FF671F]' /> <span>KumarPara</span></a>
+                </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu font-semibold  menu-horizontal px-1 gap-4">
+            <div className="navbar-center hidden md:flex">
+                <ul className="menu font-semibold  menu-horizontal px-1 lg:gap-4">
                     <li><NavLink className='bg-[#FF671F]' to='/'>Home</NavLink></li>
                     <li>
                         <details>
-                            <summary>All Categories </summary>
+                            <summary >Categories </summary>
                             <ul className="p-2">
                                 <li><Link to='/'>Earthenware</Link></li>
                                 <li><Link to='/'>Ceramic</Link></li>
