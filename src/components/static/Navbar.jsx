@@ -3,7 +3,7 @@ import { GiClothJar } from "react-icons/gi";
 function Navbar() {
     return (
 
-        <div className="navbar bg-[#cddbcbd2] border-2 rounded-b-md mb-2 pb-2">
+        <div className="navbar bg-[#cddbcbd2] border-2 rounded-b-md mb-36 pb-2">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -29,7 +29,7 @@ function Navbar() {
             </div>
             <div className="navbar-center hidden md:flex">
                 <ul className="menu font-semibold  menu-horizontal px-1 lg:gap-4">
-                    <li><NavLink className='bg-[#FF671F]' to='/'>Home</NavLink></li>
+                    <li><NavLink to='/'>Home</NavLink></li>
                     <li>
                         <details>
                             <summary >Categories </summary>
@@ -40,7 +40,7 @@ function Navbar() {
                             </ul>
                         </details>
                     </li>
-                    <li><NavLink to='/add-product'>Add Product</NavLink></li>
+                    <li><NavLink to='/add-craft'>Add Product</NavLink></li>
                     <li><NavLink to='/product-list'>My Add List </NavLink></li>
                 </ul>
             </div>

@@ -28,7 +28,7 @@ function Banner() {
             onSlideChange={() => console.log('slide change')}
         >
             <SwiperSlide>
-                <div className="card mx-auto md-w-1/2 lg:w-96 bg-base-100 shadow-xl">
+                <div className="card mx-auto  md-w-1/2 lg:w-96 bg-base-100 shadow-xl">
                     <figure className='min-h-56'><img src="images/earth-product-1.png" alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title">
