@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { createContext, useContext, useEffect, useState } from 'react'
-import { app } from './firebase.config'
+import  app from './firebase.config'
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext({}) 
@@ -9,12 +9,12 @@ function AuthProvider({children}) {
 
     const [user, setUser]           = useState(null);
     const [loading, setLoading]     = useState(true)
-    const [jsonData, setJsonData]   =  useState(null)
+    const [data, setData]           = useState(null)
 
     const auth = getAuth(app)
     
 
-    const createUser = (email, password,name='Not Set', photoUrl='Not Set')=>{
+    const createUser = (email, password)=>{
         //return promise
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email,password)    
@@ -44,23 +44,22 @@ function AuthProvider({children}) {
     useEffect(()=>{
         const unsubsribe = onAuthStateChanged(auth,(currentUser)=>{
                 setUser(currentUser);
-                //console.log(currentUser)
                 setLoading(false)
             }) 
         return ()=>{unsubsribe()}
     },[auth])
-    
+
     const authInfo ={
         user,
         loading,
-        jsonData,
+        data,
         createUser,
         setUser,
         userLogIn,
         externalLogin,
         logOut,
         profileUpdate,
-        setJsonData
+        setData
     }
     return (
         <AuthContext.Provider value ={authInfo} >
