@@ -10,14 +10,22 @@ function Login() {
     const navigate = useNavigate()
     const handleLogin=()=>{
         event.preventDefault()
-        userLogIn(event.target.email.value,event.target.password.value)
-        navigate('/')
+        userLogIn(event.target.email.value,event.target.password.value).then(result=>{
+            navigate('/')
+        }).catch(error=>{
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        })
     }
     const handleExternalLogin= (provider)=>{
         externalLogin(provider).then(result=>{
 
             navigate('/')
-        }).error((error)=>{
+        }).catch((error)=>{
             Swal.fire({
                 title: 'Error!',
                 text: error.message,
