@@ -8,6 +8,7 @@ import {
     QueryClient,
     QueryClientProvider,
   } from '@tanstack/react-query'
+import CraftCard from './CraftCard'
 function Home() {
     const queryClient =  useQueryClient()
     const {data, isLoading}= useQuery({
@@ -20,9 +21,17 @@ function Home() {
     })
     //console.log(data)
     return (
-        <div>
+        <div className='w-4/5 mx-auto'>
             <Banner isLoading= {isLoading} crafts = {data}></Banner>
+            <div className='grid md:grid-cols-2 gap-5  lg:grid-cols-3'>
+                {
+                    data && data.map(craft=>{
+                        return <CraftCard isLoading={isLoading} craft={craft} key={craft._id}></CraftCard>
+                    })
+                }
+            </div>
         </div>
+
     )
 }
 

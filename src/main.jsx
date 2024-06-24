@@ -32,14 +32,15 @@ const router = createBrowserRouter([
       {
         path: '/add-craft',
         element: <AddCraft />
+      },
+      {
+        path:'/view-details/:id',
+        element:<ViewDetails/>
       }
 
     ]
   },
-  {
-    path:'/view-details:id',
-    element:<ViewDetails/>
-  }
+  
   
 ]);
 

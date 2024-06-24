@@ -43,7 +43,7 @@ function Banner({crafts, isLoading}) {
                                     </h2>
                                     <p>{craft.short_description}</p>
                                     <div className="card-actions justify-center">
-                                        <Link to='/view-details' className="btn btn-primary">
+                                        <Link to={'/view-details/'+craft._id} className="btn btn-primary">
                                             View Details
                                         </Link>
                                     </div>

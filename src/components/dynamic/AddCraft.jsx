@@ -6,15 +6,17 @@ function AddCraft() {
         event.preventDefault()
         //console.log(event.target.image_url.value)
         const inputValues= [
-                        event.target.image_url.value,
-                        event.target.item_name.value,
-                        event.target.subcategory.value,
-                        event.target.short_description.value,
-                        event.target.price.value,
-                        event.target.rating.value,
-                        event.target.processing_time.value,           
-                        event.target.user_name.value,      
-                        event.target.user_email.value,      
+                        event.target.image_url.value,//0
+                        event.target.item_name.value,//1
+                        event.target.subcategory.value,//2
+                        event.target.short_description.value,//3
+                        event.target.price.value,//4
+                        event.target.rating.value,//5
+                        event.target.processing_time.value,//6           
+                        event.target.user_name.value,//7      
+                        event.target.user_email.value,//8      
+                        event.target.in_stock.value,//9      
+                        event.target.customization.value,//10      
                     ]
        // console.log(inputValues)
        axios.post('http://localhost:5000/add-craft', {
@@ -25,6 +27,8 @@ function AddCraft() {
         price: inputValues[4],
         rating: inputValues[5],
         processing_time: inputValues[6],
+        in_stock: inputValues[9],
+        customization: inputValues[10],
         user_name: inputValues[7],
         user_email: inputValues[8],
       })
@@ -86,6 +90,20 @@ function AddCraft() {
                 <label className="input  font-semibold text-red-800 border-b-2  input-bordered flex  items-center gap-2">
                     <span className='border-r-2 border-black rounded px-4 py-2 text-white bg-red-400 w-56'>Enter Processing Time</span> 
                     <input type="text" name='processing_time' className="" placeholder="Processing time" />
+                </label>
+                <label className="input  font-semibold text-red-800 border-b-2  input-bordered flex  items-center gap-2">
+                    <span className='border-r-2 border-black rounded px-4 py-2 text-white bg-red-400 w-56'>In stock</span> 
+                    <select className='w-30' name="in_stock" id="">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </label>
+                <label className="input  font-semibold text-red-800 border-b-2  input-bordered flex  items-center gap-2">
+                    <span className='border-r-2 border-black rounded px-4 py-2 text-white bg-red-400 w-56'>Customization</span> 
+                    <select className='w-30' name="customization" id="">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
                 </label>
                 <label className="input  font-semibold text-red-800 border-b-2  input-bordered flex  items-center gap-2">
                     <span className='border-r-2 border-black rounded px-4 py-2 text-white bg-red-400 w-56'>User EMAIL</span> 
