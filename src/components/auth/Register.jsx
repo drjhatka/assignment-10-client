@@ -5,12 +5,14 @@ import { AuthContext } from './AuthProvider'
 import Swal from 'sweetalert2'
 
 function Register() {
-    const { user, createUser } = useContext(AuthContext)
+    const { user, createUser, profileUpdate } = useContext(AuthContext)
     const navigate = useNavigate()
     const handleRegister = () => {
         event.preventDefault()
         createUser(event.target.email.value, event.target.password.value).then((userCredential) => {
             // Signed up 
+            console.log(event.target.name.value, event.target.photoURL.value)
+            profileUpdate(event.target.name.value, event.target.photoURL.value)
             setTimeout(() => {
                 Swal.fire({
                     title: 'User Added!',
@@ -18,20 +20,20 @@ function Register() {
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 })
+                navigate('/login')
             }, 1500)
           }).catch((error)=>{
-            setTimeout(() => {
                 Swal.fire({
-                    title: 'User Added!',
+                    title: 'An Error occured!',
                     text: error.message,
-                    icon: 'success',
+                    icon: 'error',
                     confirmButtonText: 'Ok'
                 })
-          })
+        
         })
         //redirect to login page
       
-        navigate('/login', { replace: true })
+        //navigate('/login', { replace: true })
 
 
     }
@@ -51,6 +53,12 @@ function Register() {
                                     <span className="label-text">Name</span>
                                 </label>
                                 <input type="text" name='name' placeholder="name" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo URL</span>
+                                </label>
+                                <input type="text" name='photoURL' placeholder="photoURL" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
