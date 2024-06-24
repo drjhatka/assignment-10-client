@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { GiClothJar } from "react-icons/gi";
 import { AuthContext } from '../auth/AuthProvider'
 import {useNavigate} from 'react-router-dom'
+import { Tooltip } from 'react-tooltip'
 function Navbar() {
     const { user, loading, logOut } = useContext(AuthContext)
     console.log(user)
@@ -77,7 +78,7 @@ function Navbar() {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full border-2 border-green-500 ">
-                            <img
+                            <img data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} 
                                 alt='Photo'
                                 src={user?.photoURL} />
                         </div>
@@ -96,6 +97,7 @@ function Navbar() {
                         <li><button onClick={signOut}>Logout</button></li>
                     </ul>
                 </div>
+                <Tooltip id="my-tooltip" />
             </div>
             }
          
