@@ -11,6 +11,13 @@ function Login() {
     const handleLogin=()=>{
         event.preventDefault()
         userLogIn(event.target.email.value,event.target.password.value).then(result=>{
+            setTimeout(()=>Swal.fire({
+                title: 'Login Success!',
+                text: 'User Logged In Successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+
+            }),500)
             navigate('/')
         }).catch(error=>{
             Swal.fire({
@@ -23,7 +30,13 @@ function Login() {
     }
     const handleExternalLogin= (provider)=>{
         externalLogin(provider).then(result=>{
+            setTimeout(()=>Swal.fire({
+                title: 'Login Success!',
+                text: 'User Logged In Successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
 
+            }),500)
             navigate('/')
         }).catch((error)=>{
             Swal.fire({

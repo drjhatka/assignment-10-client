@@ -9,31 +9,24 @@ function Register() {
     const navigate = useNavigate()
     const handleRegister = () => {
         event.preventDefault()
+       console.log(event.target.name.value, event.target.photoURL.value)
         createUser(event.target.email.value, event.target.password.value).then((userCredential) => {
             // Signed up 
-            console.log(event.target.name.value, event.target.photoURL.value)
-            profileUpdate(event.target.name.value, event.target.photoURL.value)
-            setTimeout(() => {
-                Swal.fire({
-                    title: 'User Added!',
-                    text: 'User added Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                })
-                navigate('/login')
-            }, 1500)
-          }).catch((error)=>{
-                Swal.fire({
-                    title: 'An Error occured!',
-                    text: error.message,
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                })
-        
-        })
+
+            //console.log(event.target.name.value, event.target.photoURL.value)
+            setTimeout(()=>Swal.fire({
+                title: 'User Added!',
+                text: 'User added Successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+
+            }),500)
+            //navigate('/login')
+          })
+          profileUpdate(event.target.name.value,event.target.photoURL.value)
+    
         //redirect to login page
-      
-        //navigate('/login', { replace: true })
+        navigate('/')
 
 
     }
