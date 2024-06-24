@@ -14,7 +14,7 @@ function Navbar() {
     }
     return (
 
-        <div className="navbar bg-[#cddbcbd2] border-2 rounded-b-md mb-36 pb-2">
+        <div className="navbar bg-[#cddbcbd2] border-2 rounded-b-md pb-2">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,7 +45,7 @@ function Navbar() {
                     <li>
                         <details>
                             <summary >Categories </summary>
-                            <ul className="p-2">
+                            <ul className="p-2 z-10">
                                 <li><Link to='/'>Earthenware</Link></li>
                                 <li><Link to='/'>Ceramic</Link></li>
                                 <li><Link to='/'>Porcelin</Link></li>
