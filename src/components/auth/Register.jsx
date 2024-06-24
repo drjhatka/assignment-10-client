@@ -9,26 +9,40 @@ function Register() {
     const navigate = useNavigate()
     const handleRegister = () => {
         event.preventDefault()
-       console.log(event.target.name.value, event.target.photoURL.value)
-        createUser(event.target.email.value, event.target.password.value).then((userCredential) => {
-            // Signed up 
-
-            //console.log(event.target.name.value, event.target.photoURL.value)
-            setTimeout(()=>Swal.fire({
-                title: 'User Added!',
-                text: 'User added Successfully',
-                icon: 'success',
-                confirmButtonText: 'Ok'
-
-            }),500)
-            //navigate('/login')
-          })
-          profileUpdate(event.target.name.value,event.target.photoURL.value)
+        //validate password
+        if(/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(event.target.password.value)){
+            createUser(event.target.email.value, event.target.password.value).then((userCredential) => {
+                // Signed up 
     
-        //redirect to login page
-        navigate('/')
-
-
+                //console.log(event.target.name.value, event.target.photoURL.value)
+                setTimeout(()=>Swal.fire({
+                    title: 'User Added!',
+                    text: 'User added Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                    
+                }),500)
+                navigate('/')
+            }).catch(error=>{
+                Swal.fire({
+                    title: 'Login Error',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Close'
+                })
+              })
+    
+              //not working for token issue...
+              //profileUpdate(event.target.name.value,event.target.photoURL.value)
+        }
+        else{
+            Swal.fire({
+                title: 'Register Error',
+                text: 'Password must be six characters with one uppercase and one lowercase letter!',
+                icon: 'error',
+                confirmButtonText: 'Close'
+            })
+        }
     }
     console.log(user)
     return (
