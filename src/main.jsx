@@ -19,6 +19,9 @@ import AddCraft from './components/dynamic/AddCraft.jsx';
 import AuthProvider from './components/auth/AuthProvider.jsx';
 import ViewDetails from './components/dynamic/ViewDetails.jsx';
 import ViewAllItems from './components/dynamic/ViewAllItems.jsx';
+import Login from './components/auth/Login.jsx';
+import Register from './components/auth/Register.jsx';
+import PrivateRoute from './components/auth/PrivateRoute.jsx';
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
@@ -32,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-craft',
-        element: <AddCraft />
+        element:<PrivateRoute> <AddCraft /></PrivateRoute>
       },
       {
         path:'/view-details/:id',
@@ -41,6 +44,14 @@ const router = createBrowserRouter([
       {
         path:'/view-all-items',
         element:<ViewAllItems/>
+      },
+      {
+        path:'/login',
+        element:<Login/>
+      },
+      {
+        path:'/register',
+        element:<Register/>
       }
 
     ]
