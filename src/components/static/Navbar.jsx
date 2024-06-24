@@ -79,7 +79,7 @@ function Navbar() {
                         <div className="w-10 rounded-full border-2 border-green-500 ">
                             <img
                                 alt='Photo'
-                                src={user?.photoUrl} />
+                                src={user?.photoURL} />
                         </div>
                     </div>
 

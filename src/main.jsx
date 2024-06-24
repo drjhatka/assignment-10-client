@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/view-details/:id',
-        element:<ViewDetails/>
+        element:<PrivateRoute><ViewDetails/></PrivateRoute>
       },
       {
         path:'/view-all-items',

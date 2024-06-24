@@ -10,7 +10,7 @@ function PrivateRoute({ children }) {
         console.log(loading)
         return <span className="loading loading-bars loading-lg"></span>   
     }
-    if (user) {
+    else if (user) {
         return children
     }  
     //useEffect(()=>{},[navigate('/login')])
