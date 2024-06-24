@@ -7,9 +7,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
@@ -22,6 +19,7 @@ import ViewAllItems from './components/dynamic/ViewAllItems.jsx';
 import Login from './components/auth/Login.jsx';
 import Register from './components/auth/Register.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import MyAddList from './components/dynamic/MyAddList.jsx';
 
 
 const queryClient = new QueryClient()
@@ -54,12 +52,13 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register/>
+      },
+      {
+        path:'/view-addlist',
+        element:<PrivateRoute><MyAddList/></PrivateRoute>
       }
-
     ]
-  },
-  
-  
+  },  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -67,7 +66,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router}>
-        
         </RouterProvider>
       </QueryClientProvider>
     </AuthProvider>

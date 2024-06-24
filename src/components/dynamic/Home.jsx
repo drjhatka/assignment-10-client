@@ -6,6 +6,8 @@ import {
     useQueryClient,
   } from '@tanstack/react-query'
 import CraftCard from './CraftCard'
+import Lottie from "lottie-react";
+import sandclock from "../../../animation.json";
 function Home() {
     const queryClient =  useQueryClient()
     const {data, isLoading}= useQuery({

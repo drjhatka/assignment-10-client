@@ -1,11 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Lottie from "lottie-react";
+import sandclock from "../../../animation.json";
 function CraftCard({craft, isLoading}) {
     return (
         
         <div>
             {
-                isLoading ?<span className="loading loading-infinity loading-lg"></span>:
+                isLoading ?<Lottie animationData={sandclock} loop={true} />:
                 <div className='border-2 border-green-600 rounded-md py-2 flex flex-col gap-5 mb-3 mt-3 px-3 '>
                    <div className='h-56 overflow-hidden'><img className='mx-auto py-2 px-2 rounded-lg'  src={craft.image_url} alt="" /></div>
                    <div className='text-center font-bold text-blue-700'>{craft.item_name}</div>

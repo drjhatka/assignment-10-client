@@ -6,6 +6,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade'
 import {Link} from 'react-router-dom'
+import Lottie from "lottie-react";
+import sandclock from "../../../animation.json";
 function Banner({crafts, isLoading}) {
     SwiperCore.use([Autoplay, EffectFade]);
     
@@ -31,7 +33,7 @@ function Banner({crafts, isLoading}) {
         >
             {
                 isLoading ?
-                <span className="loading loading-infinity loading-lg"></span>
+                <Lottie className='h-56' animationData={sandclock} loop={true} />
                 :crafts.map(craft=>{
                     return <SwiperSlide key={craft._id}>
                             <div className="card mx-auto  md-w-1/2 lg:w-96 bg-base-100 shadow-xl">

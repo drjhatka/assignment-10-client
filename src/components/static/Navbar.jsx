@@ -57,7 +57,7 @@ function Navbar() {
                         user ?
                             <>
                                 <li><NavLink to='/add-craft'>Add Product</NavLink></li>
-                                <li><NavLink to='/product-list'>My Add List </NavLink></li>
+                                <li><NavLink to='/view-addlist'>My Add List </NavLink></li>
                             </>
                             :
                             <>
