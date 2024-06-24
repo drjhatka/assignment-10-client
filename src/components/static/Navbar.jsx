@@ -19,6 +19,7 @@ function Navbar() {
                                 <li><Link>Porcelin</Link></li>
                             </ul>
                         </li>
+                        <li><NavLink to='/view-all-items'>View All Items</NavLink></li>
                         <li><NavLink to='/add-product'>Add Product</NavLink></li>
                         <li><NavLink to='/product-list'>My Product List</NavLink></li>
                     </ul>
@@ -42,6 +43,8 @@ function Navbar() {
                     </li>
                     <li><NavLink to='/add-craft'>Add Product</NavLink></li>
                     <li><NavLink to='/product-list'>My Add List </NavLink></li>
+                    <li><NavLink to='/view-all-items'>View All Items</NavLink></li>
+
                 </ul>
             </div>
             <div className="navbar-end">

@@ -18,16 +18,17 @@ import Home from './components/dynamic/Home.jsx';
 import AddCraft from './components/dynamic/AddCraft.jsx';
 import AuthProvider from './components/auth/AuthProvider.jsx';
 import ViewDetails from './components/dynamic/ViewDetails.jsx';
+import ViewAllItems from './components/dynamic/ViewAllItems.jsx';
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-    errorElement: <Error />,
+    element: <App/>,
+    errorElement: <Error/>,
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home/>
       },
       {
         path: '/add-craft',
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:'/view-details/:id',
         element:<ViewDetails/>
+      },
+      {
+        path:'/view-all-items',
+        element:<ViewAllItems/>
       }
 
     ]
