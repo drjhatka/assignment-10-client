@@ -21,7 +21,9 @@ import ViewDetails from './components/dynamic/ViewDetails.jsx';
 import ViewAllItems from './components/dynamic/ViewAllItems.jsx';
 import Login from './components/auth/Login.jsx';
 import Register from './components/auth/Register.jsx';
-import PrivateRoute from './components/auth/PrivateRoute.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
+
+
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
@@ -35,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-craft',
-        element:<PrivateRoute> <AddCraft /></PrivateRoute>
+        element:<PrivateRoute><AddCraft /></PrivateRoute>
       },
       {
         path:'/view-details/:id',
@@ -65,7 +67,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router}>
-          <App />
+        
         </RouterProvider>
       </QueryClientProvider>
     </AuthProvider>

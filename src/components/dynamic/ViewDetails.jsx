@@ -17,6 +17,9 @@ function ViewDetails() {
         queryFn: async () => {
             const result = await axios.get('http://localhost:5000/get-craft/' + id)
             return result.data
+        },
+        onSuccess:async ()=>{
+            //queryClient.invalidateQuery('craft')
         }
     })
     function convertRating (rating) {

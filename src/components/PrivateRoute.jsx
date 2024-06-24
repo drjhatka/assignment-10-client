@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { AuthContext } from './components/AuthProvider'
+import  {AuthContext}  from './auth/AuthProvider'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 function PrivateRoute({ children }) {
@@ -8,13 +8,15 @@ function PrivateRoute({ children }) {
     const navigate = useNavigate()
     if (loading) {
         console.log(loading)
-        return <span className="loading loading-bars loading-lg"></span>
-            
+        return <span className="loading loading-bars loading-lg"></span>   
     }
     if (user) {
         return children
     }  
+    //useEffect(()=>{},[navigate('/login')])
+    // return navigate('/login') 
     return <Navigate state={location.pathname} to="/login"></Navigate>
+
 }
 
 export default PrivateRoute
