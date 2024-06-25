@@ -14,14 +14,15 @@ function Home() {
         queryKey:['crafts'],
         queryFn:async ()=>{
            const result= await axios.get('http://localhost:5000/get-all')
-           //console.log(result.data)
            return result.data
-        }
+        }//end use query
     })
-    //console.log(data)
     return (
         <div className='w-4/5 mx-auto'>
-            <Banner isLoading= {isLoading} crafts = {data}></Banner>
+            <div className='border-2 bg-slate-400 py-2'>
+                <Banner isLoading= {isLoading} crafts = {data}></Banner>
+
+            </div>
             <div className='grid md:grid-cols-2 gap-5  lg:grid-cols-3'>
                 {
                     data && data.map(craft=>{

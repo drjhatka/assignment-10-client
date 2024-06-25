@@ -4,6 +4,8 @@ import {
     useQueryClient,
 } from '@tanstack/react-query'
 import TableData from './TableData'
+import Lottie from "lottie-react";
+import sandclock from "../../../animation.json";
 function ViewAllItems() {
     const queryClient = useQueryClient()
     const { data, isLoading } = useQuery({
@@ -28,11 +30,11 @@ function ViewAllItems() {
                     </tr>
                 </thead>
                 
-               <tbody>     
+               <tbody className=''>     
                     
                         
                     {
-                        isLoading ? <p className="loading loading-infinity loading-lg"></p> :                 
+                        isLoading ?<div className='flex mx-auto justify-center w-full'><Lottie className=' h-56 text-center w-full' animationData={sandclock} loop={true} /></div>:                 
                         data.map(craft=><TableData craft={craft} key={craft._id}></TableData>)
                     }
                     

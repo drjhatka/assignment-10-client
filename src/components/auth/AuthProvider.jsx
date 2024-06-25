@@ -1,20 +1,19 @@
-/* eslint-disable no-unused-vars */
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { createContext, useEffect, useState } from 'react'
 import  app from './firebase.config'
-import { useLoaderData, useNavigate } from 'react-router-dom';
-
+import PropTypes from 'prop-types'
 export const AuthContext = createContext({}) 
+
 function AuthProvider({children}) {
 
     const [user, setUser]           = useState(null);
     const [loading, setLoading]     = useState(true)
     const [data, setData]           = useState(null)
     const auth = getAuth(app)
-    
 
+//...auth functions
     const createUser = (email, password)=>{
-        //return promise
+        //...set loading to true and return promise
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email,password)    
     }
@@ -27,20 +26,18 @@ function AuthProvider({children}) {
     }
     const logOut = ()=>{
             signOut(auth).then(()=>{
-                //redirect to login page
-            setLoading(true)
-                
+            setLoading(true)    
              }).catch((error)=>{
-                 
+                console.log(error.message) 
              });
-        }
+        }//end logOut
        
     const profileUpdate = (displayName,photoUrl)=>{
         return updateProfile(auth.currentUser,{
             displayName:displayName, photoURL:photoUrl
         })
-    }
-
+    }//end profile update
+    //...keep track of lodeded user
     useEffect(()=>{
         const unsubsribe = onAuthStateChanged(auth,(currentUser)=>{
                 setUser(currentUser);
@@ -67,5 +64,7 @@ function AuthProvider({children}) {
         </AuthContext.Provider> 
     )
 }
-
+AuthProvider.protoTypes ={
+    children:PropTypes.object
+}
 export default AuthProvider
