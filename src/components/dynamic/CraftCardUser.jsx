@@ -1,10 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Lottie from "lottie-react";
+import Lottie from "lottie-react"
+import axios from 'axios'
+import Swal from 'sweetalert2'
 import sandclock from "../../../animation.json";
 import { MdOutlineBrowserUpdated } from "react-icons/md"
-import { TiDelete } from "react-icons/ti";
+import { TiDelete } from "react-icons/ti"
 function CraftCardUser({ craft, isLoading }) {
+    
+    const deleteCraft =async(id)=>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then(async(result) => {
+            if (result.isConfirmed) {
+                axios.delete('http://localhost:5000/delete-craft/'+id) 
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          });
+    }
     return (
 
         <div>
@@ -26,7 +49,7 @@ function CraftCardUser({ craft, isLoading }) {
                         </div>
                         <div className='flex gap-36 md:gap-0 justify-between'>       
                                 <Link to={'/update-craft/'+craft._id} className='flex gap-3 items-center btn-outline border-2 px-2 rounded-md font-semibold text-red-700'><MdOutlineBrowserUpdated className='text-3xl text-red-600 hover:text-white' />Update</Link>
-                                <button className='flex gap-3 items-center btn-outline border-2 px-2 rounded-md font-semibold text-red-700'><TiDelete className='text-3xl text-red-600 hover:text-white' />Delete</button>
+                                <button onClick={()=>deleteCraft(craft._id)} className='flex gap-3 items-center btn-outline border-2 px-2 rounded-md font-semibold text-red-700'><TiDelete className='text-3xl text-red-600 hover:text-white' />Delete</button>
 
                         </div>
                     </div>

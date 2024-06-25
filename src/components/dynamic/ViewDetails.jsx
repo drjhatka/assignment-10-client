@@ -5,19 +5,22 @@ import {
     useQuery,
     useQueryClient,
 } from '@tanstack/react-query'
+
+
 function ViewDetails() {
     const id = useParams().id
-    //console.log(id)
     const queryClient = useQueryClient()
+
+    
     const { data, isLoading } = useQuery({
         queryKey: ['craft'],
         queryFn: async () => {
-            const result = await axios.get('http://localhost:5000/get-craft/' + id)
+            const result = await axios(`http://localhost:5000/get-craft/${id}`)
             return result.data
         },
-        onSuccess:async ()=>{
-            await queryClient.invalidateQuery(['craft'])
-        }
+        onSuccess:()=>{
+            queryClient.removeQueries('craft')
+        }        
     })
     function convertRating (rating) {
         const rating_array = []
@@ -33,11 +36,11 @@ function ViewDetails() {
         }
         return rating_array
     }//end function
-    console.log(convertRating(4))
+
     return (
         <>
             {
-                isLoading ? <span key={Math.random()*100} className="loading text-red-600 loading-infinity loading-lg"></span> :
+                isLoading ? <span key={100} className="loading text-red-600 loading-infinity loading-lg"></span> :
 
                     <div className=''>
                         <div className='w-full border-2 bg-amber-500 text-white py-4 text-center font-semibold'>
