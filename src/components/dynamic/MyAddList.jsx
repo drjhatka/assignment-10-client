@@ -1,15 +1,13 @@
 import {useContext} from 'react'
-import {useQuery, QueryClient} from '@tanstack/react-query'
+import {useQuery} from '@tanstack/react-query'
 import axios from 'axios'
-import Swal from 'sweetalert2'
 import CraftCardUser from './CraftCardUser'
 import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
 import { AuthContext } from '../auth/AuthProvider'
 
 function MyAddList() {
-    const {user } = useContext(AuthContext)
-    console.log('Email => ',user.email)
+    const {user} = useContext(AuthContext)
     //...fetch all posts added by the current user, assuming user is already logged in
     
     const {data, isLoading} = useQuery({
@@ -25,8 +23,8 @@ function MyAddList() {
         onError:(error)=>{
             console.log(error)
         }
-    })
-    console.log('Data',data)
+    })//end query
+    
     return (
        <> 
         <div className='flex px-5 py-5 text-center shadow-lg shadow-black mt-2 border-2 bg-[#006400] '>

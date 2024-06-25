@@ -10,7 +10,6 @@ import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
 
 function Home() {
-    const queryClient =  useQueryClient()
     const [seeAll, setSeeAll]= useState(false)
     const {data, isLoading}= useQuery({
         queryKey:['crafts'],
@@ -18,7 +17,7 @@ function Home() {
            const result= await axios.get('http://localhost:5000/get-all')
            return result.data
         }//end use query
-    })
+    })//end query
     return (
         <div className='w-4/5 mx-auto'>
             <div className='border-2 bg-slate-400 py-2'>
