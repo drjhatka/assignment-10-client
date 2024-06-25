@@ -72,7 +72,7 @@ function Navbar() {
                 <div className="navbar-end gap-4">
                     <div><span className='px-4 py-2 hidden lg:block border-2 rounded-md text-blue-700 font-semibold text-xs shadow-md'>{user?.email}</span></div>
 
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end z-10">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full border-2 border-green-500 ">
                                 <img data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName}

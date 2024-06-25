@@ -34,10 +34,10 @@ function Banner({crafts, isLoading}) {
             {
                 isLoading ?
                 <Lottie className='h-56' animationData={sandclock} loop={true} />
-                :crafts.map(craft=>{
+                :crafts.slice(0,3).map(craft=>{
                     return <SwiperSlide className='min-h-96 ' key={craft._id}>
                             <div className="card mx-auto bg-slate-50  md-w-1/2 shadow-xl">
-                                <figure className=' py-2 ' ><img style={{'width':'50%','max-height':'180px', 'object-fit':'contain'}} className='rounded-md'  src={craft.image_url} alt="Shoes" /></figure>
+                                <figure className=' py-2 ' ><img style={{'width':'50%','maxHeight':'180px', 'objectFit':'contain'}} className='rounded-md'  src={craft.image_url} alt="Shoes" /></figure>
                                 <div className="card-body flex justify-center items-center">
                                     <h2 className="card-title ">
                                         {craft.item_name}

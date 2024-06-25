@@ -7,7 +7,7 @@ function PrivateRoute({ children }) {
     const location = useLocation()
     const navigate = useNavigate()
     if (loading) {
-        return <span className="loading loading-bars loading-lg"></span>   
+        return <span key={Math.random()*100} className="loading loading-bars loading-lg"></span>   
     }
     else if (user) {
         return children
