@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Swal from 'sweetalert2'
-function AddCraft() {
-    const handleAddCraft = (event) => {
+function UpdateCraft() {
+    const handleUpdateCraft = (id) => {
         event.preventDefault()
         //console.log(event.target.image_url.value)
         const inputValues = [
@@ -18,7 +18,7 @@ function AddCraft() {
             event.target.customization.value,//10      
         ]
         // console.log(inputValues)
-        axios.post('http://localhost:5000/add-craft', {
+        axios.post('http://localhost:5000/update-craft/' + id, {
             image_url: inputValues[0],
             item_name: inputValues[1],
             subcategory: inputValues[2],
@@ -34,8 +34,8 @@ function AddCraft() {
             .then(function (response) {
                 if (response.data.acknowledged) {
                     Swal.fire({
-                        title: 'Product Added!',
-                        text: 'Product Added Successfully',
+                        title: 'Product Updated!',
+                        text: 'Product Updated Successfully',
                         icon: 'success',
                         confirmButtonText: 'Close'
                     })
@@ -47,17 +47,18 @@ function AddCraft() {
                     title: 'Error!',
                     text: 'Product Could not be added',
                     icon: 'error',
-                    confirmButtonText: 'Try Again'
+                    confirmButtonText: 'Ok'
                 })
             });
 
     }
     return (
-        <div className=' border-2'>
-            <div className='flex px-5 mb-4 py-5 text-center shadow-lg shadow-slate-500 border-2 bg-[#FFDBBB] '>
-                <h1 className='text-center text-3xl font-semibold w-full text-green-800'>Add Craft</h1>
+        <div className=' border-2 pt-5 '>
+            <div className='flex px-5 mb-4 py-5 text-center shadow-lg shadow-slate-500 mt-2 border-2 bg-[#006400] '>
+                <h1 className='text-center text-3xl font-semibold w-full text-white'>Update Craft</h1>
             </div>
-            <form onSubmit={event => handleAddCraft(event)} className='flex flex-col gap-4 md:justify-center md:items-center'>
+            <form onSubmit={event => handleUpdateCraft(event)} className='flex flex-col gap-4 md:justify-center md:items-center'>
+
                 <label className="input w-full lg:w-3/5 font-semibold text-red-800 border-b-2  input-bordered flex  items-center gap-2">
                     <span className='border-r-2 border-black rounded px-4 py-2 text-white bg-red-400 w-56'>Image URL:</span>
                     <input type="text" name='image_url' className="w-[100%]" placeholder="Enter Image URL" />
@@ -114,10 +115,10 @@ function AddCraft() {
                     <span className='border-r-2 border-black rounded px-4 py-2 text-white bg-red-400 w-56'>User NAME</span>
                     <input type="text" name='user_name' className="" placeholder="User Name" />
                 </label>
-                <button type='submit' className='btn btn-primary'>Add Craft</button>
+                <button type='submit' className='btn btn-primary'>Update Craft</button>
             </form>
         </div>
     )
 }
 
-export default AddCraft
+export default UpdateCraft
