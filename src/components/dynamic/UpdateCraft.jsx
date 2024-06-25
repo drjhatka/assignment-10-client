@@ -9,7 +9,7 @@ function UpdateCraft() {
     const id = useParams().id
     //console.log(id)
     const { data, isLoading } = useQuery({
-        queryKey: ['crafts'],
+        queryKey: ['get-craft'],
         queryFn: async () => {
             const result = await axios.get(`http://localhost:5000/get-craft/${id}`)
             return result.data

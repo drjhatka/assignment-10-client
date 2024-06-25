@@ -21,58 +21,60 @@ import Register from './components/auth/Register.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
 import MyAddList from './components/dynamic/MyAddList.jsx';
 import UpdateCraft from './components/dynamic/UpdateCraft.jsx'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
-    errorElement: <Error/>,
+    element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home />
       },
       {
         path: '/add-craft',
-        element:<PrivateRoute><AddCraft /></PrivateRoute>
+        element: <PrivateRoute><AddCraft /></PrivateRoute>
       },
       {
-        path:'/view-details/:id',
-        element:<PrivateRoute><ViewDetails/></PrivateRoute>
+        path: '/view-details/:id',
+        element: <PrivateRoute><ViewDetails /></PrivateRoute>
       },
       {
-        path:'/view-all-items',
-        element:<ViewAllItems/>
+        path: '/view-all-items',
+        element: <ViewAllItems />
       },
       {
-        path:'/login',
-        element:<Login/>
+        path: '/login',
+        element: <Login />
       },
       {
-        path:'/register',
-        element:<Register/>
+        path: '/register',
+        element: <Register />
       },
       {
-        path:'/view-addlist',
-        element:<PrivateRoute><MyAddList/></PrivateRoute>
+        path: '/view-addlist',
+        element: <PrivateRoute><MyAddList /></PrivateRoute>
       },
       {
-        path:'update-craft/:id',
-        element:<PrivateRoute><UpdateCraft/></PrivateRoute>
+        path: '/update-craft/:id',
+        element: <PrivateRoute><UpdateCraft /></PrivateRoute>
       }
     ]
-  },  
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
         <RouterProvider router={router}>
+          <ReactQueryDevtools initialIsOpen={true} />
         </RouterProvider>
-      </QueryClientProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
