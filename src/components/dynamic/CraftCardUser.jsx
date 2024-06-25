@@ -3,12 +3,40 @@ import { Link } from 'react-router-dom'
 import Lottie from "lottie-react"
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import {
+    useMutation,
+    useQueryClient,
+} from '@tanstack/react-query'
 import sandclock from "../../../animation.json";
 import { MdOutlineBrowserUpdated } from "react-icons/md"
 import { TiDelete } from "react-icons/ti"
+
+
 function CraftCardUser({ craft, isLoading }) {
-    
-    const deleteCraft =async(id)=>{
+    const queryClient = useQueryClient()
+    const { mutate } = useMutation({
+        mutationFn: async() => {
+            return await axios.delete('http://localhost:5000/delete-craft/'+craft._id)
+        },
+        onSuccess: () => {
+            Swal.fire({
+                title: "Deleted!",
+                text: "Craft has been deleted.",
+                icon: "success"
+            });
+            queryClient.invalidateQueries(['add-list'])
+
+        },        
+        onError: (error) => {
+            console.log(error)
+            Swal.fire({
+                title: "Delete Error!",
+                text: "Craft could not be deleted.",
+                icon: "error"
+            });
+        }
+    })
+    const deleteCraft =async()=>{
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -19,7 +47,8 @@ function CraftCardUser({ craft, isLoading }) {
             confirmButtonText: "Yes, delete it!"
           }).then(async(result) => {
             if (result.isConfirmed) {
-                axios.delete('http://localhost:5000/delete-craft/'+id) 
+                mutate()
+
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -49,7 +78,7 @@ function CraftCardUser({ craft, isLoading }) {
                         </div>
                         <div className='flex gap-36 md:gap-0 justify-between'>       
                                 <Link to={'/update-craft/'+craft._id} className='flex gap-3 items-center btn-outline border-2 px-2 rounded-md font-semibold text-red-700'><MdOutlineBrowserUpdated className='text-3xl text-red-600 hover:text-white' />Update</Link>
-                                <button onClick={()=>deleteCraft(craft._id)} className='flex gap-3 items-center btn-outline border-2 px-2 rounded-md font-semibold text-red-700'><TiDelete className='text-3xl text-red-600 hover:text-white' />Delete</button>
+                                <button onClick={()=>deleteCraft()} className='flex gap-3 items-center btn-outline border-2 px-2 rounded-md font-semibold text-red-700'><TiDelete className='text-3xl text-red-600 hover:text-white' />Delete</button>
 
                         </div>
                     </div>
