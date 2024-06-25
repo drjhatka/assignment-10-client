@@ -7,7 +7,7 @@ import sandclock from "../../../animation.json";
 import { AuthContext } from '../auth/AuthProvider'
 
 function MyAddList() {
-    const [customization, setCustomization] = useState('yes')
+    const [customization, setCustomization] = useState('no')
     const [loadedData, setLoadedData] = useState([])
     const queryClient = new QueryClient()
     const { user } = useContext(AuthContext)
@@ -55,7 +55,10 @@ function MyAddList() {
 const handleFilter = async (event) => {
   
     const value = event.target.value
-    setCustomization(value)
+    if(customization ==="yes"||customization ==='no'){
+
+        setCustomization(value)
+    }
     console.log(value)
     mutate()
     //queryClient.refetchQueries(['filter'])
@@ -66,6 +69,7 @@ return (
         <div className='mt-5 flex gap-4 py-4 flex-col items-center justify-center border-2'>
             <label htmlFor="category" className='font-semibold text-2xl'>Sort By Category</label>
             <select onChange={(event) => handleFilter(event)} name="category" className='w-24 font-bold text-red-500 border-2 border-green-500 text-center py-2 rounded-md input-bordered px-2  shadow-md' id="">
+                
                 <option value="yes">YES</option>
                 <option value="no">NO</option>
             </select>
