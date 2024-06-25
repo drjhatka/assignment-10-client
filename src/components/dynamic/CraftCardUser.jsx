@@ -58,7 +58,8 @@ function CraftCardUser({ craft, isLoading }) {
           });
     }
     return (
-
+        <>
+            
         <div>
             {
                 isLoading ? <Lottie animationData={sandclock} loop={true} /> :
@@ -77,14 +78,15 @@ function CraftCardUser({ craft, isLoading }) {
                             <p className='text-sm font-semibold text-justify'>{craft.short_description.slice(0, 80)}...</p>
                         </div>
                         <div className='flex gap-36 md:gap-0 justify-between'>       
-                                <Link to={'/update-craft/'+craft._id} className='flex gap-3 items-center btn-outline border-2 px-2 rounded-md font-semibold text-red-700'><MdOutlineBrowserUpdated className='text-3xl text-red-600 hover:text-white' />Update</Link>
-                                <button onClick={()=>deleteCraft()} className='flex gap-3 items-center btn-outline border-2 px-2 rounded-md font-semibold text-red-700'><TiDelete className='text-3xl text-red-600 hover:text-white' />Delete</button>
+                                <Link to={'/update-craft/'+craft._id} className='flex gap-3 items-center border-2 px-2 rounded-md font-semibold text-white bg-amber-700'><MdOutlineBrowserUpdated className='text-3xl text-white hover:text-white' />Update</Link>
+                                <button onClick={()=>deleteCraft()} className='flex gap-3 items-center bg-amber-700 text-white border-2 px-2 rounded-md font-semibold '><TiDelete className='text-3xl text-white hover:text-white' />Delete</button>
 
                         </div>
                     </div>
             }
 
         </div>
+        </>
     )
 }
 
