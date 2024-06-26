@@ -3,6 +3,7 @@ import { AuthContext } from './AuthProvider'
 import {Link, useNavigate} from 'react-router-dom'
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import Swal from 'sweetalert2'
+import 'dotenv/config'
 function Login() {
     const {externalLogin, userLogIn } = useContext(AuthContext)
     const googleProvider = new GoogleAuthProvider();
