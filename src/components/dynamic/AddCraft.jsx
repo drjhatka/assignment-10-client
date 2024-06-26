@@ -1,6 +1,12 @@
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import {Helmet} from 'react-helmet'
 function AddCraft() {
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Add Craft</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
     const handleAddCraft = (event) => {
         event.preventDefault()
         //console.log(event.target.image_url.value)
@@ -18,7 +24,7 @@ function AddCraft() {
             event.target.customization.value,//10      
         ]
         // console.log(inputValues)
-        axios.post('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/add-craft', {
+        axios.post('https://assignment-10-server-one-lake.vercel.app/add-craft', {
             image_url: inputValues[0],
             item_name: inputValues[1],
             subcategory: inputValues[2],

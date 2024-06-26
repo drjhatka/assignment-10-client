@@ -3,10 +3,15 @@ import { useQuery, QueryClient, useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import CraftCardUser from './CraftCardUser'
 import Lottie from "lottie-react";
-import sandclock from "../../../animation.json";
+import sandclock from "../../../animation.json"
 import { AuthContext } from '../auth/AuthProvider'
-
+import {Helmet} from 'react-helmet'
 function MyAddList() {
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Add List</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
     const [customization, setCustomization] = useState('yes')
     const [loadedData, setLoadedData] = useState([])
     const queryClient = new QueryClient()
@@ -16,7 +21,7 @@ function MyAddList() {
     const { data, isLoading } = useQuery({
         queryKey: ['add-list', setLoadedData],
         queryFn: async () => {
-            const result = await axios.post('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/view-addlist', {
+            const result = await axios.post('https://assignment-10-server-one-lake.vercel.app/view-addlist', {
                 user_email: user.email
             })
             setLoadedData(result.data)
@@ -35,7 +40,7 @@ function MyAddList() {
         mutationKey: ['filter', setLoadedData, customization],
 
         mutationFn: async () => {
-            const result = await axios.post('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/view-filterlist', {
+            const result = await axios.post('https://assignment-10-server-one-lake.vercel.app/view-filterlist', {
                 customization: customization,
                 user_email: user.email
             })

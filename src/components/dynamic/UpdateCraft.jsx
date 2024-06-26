@@ -4,14 +4,19 @@ import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
-
+import {Helmet} from 'react-helmet'
 function UpdateCraft() {
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Update Craft</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
     const id = useParams().id
     //console.log(id)
     const { data, isLoading } = useQuery({
         queryKey: ['get-craft'],
         queryFn: async () => {
-            const result = await axios.get(`https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-craft/${id}`)
+            const result = await axios.get(`https://assignment-10-server-one-lake.vercel.app/get-craft/${id}`)
             return result.data
         }//end use query
     })
@@ -32,7 +37,7 @@ function UpdateCraft() {
             event.target.customization.value,//10      
         ]
         
-        axios.put(`https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/update-craft/${id}`, {
+        axios.put(`https://assignment-10-server-one-lake.vercel.app/update-craft/${id}`, {
             image_url: inputValues[0],
             item_name: inputValues[1],
             subcategory: inputValues[2],

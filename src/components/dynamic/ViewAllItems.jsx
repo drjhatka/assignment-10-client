@@ -6,12 +6,19 @@ import {
 import TableData from './TableData'
 import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
+import {Helmet} from 'react-helmet'
+
 function ViewAllItems() {
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>View All Items</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
     const queryClient = useQueryClient()
     const { data, isLoading } = useQuery({
         queryKey: ['crafts-all'],
         queryFn: async () => {
-            const result = await axios.get('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-all')
+            const result = await axios.get('https://assignment-10-server-one-lake.vercel.app/get-all')
             //console.log(result.data)
             return result.data
         }

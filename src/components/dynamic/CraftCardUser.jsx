@@ -16,7 +16,7 @@ function CraftCardUser({ craft, isLoading }) {
     const queryClient = useQueryClient()
     const { mutate } = useMutation({
         mutationFn: async() => {
-            return await axios.delete('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/delete-craft/'+craft._id)
+            return await axios.delete('https://assignment-10-server-one-lake.vercel.app/delete-craft/'+craft._id)
         },
         onSuccess: () => {
             Swal.fire({

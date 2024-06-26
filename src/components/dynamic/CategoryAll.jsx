@@ -8,14 +8,20 @@ import {Link} from 'react-router-dom'
 import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
 import CategoryCard from './CategoryCard';
+import {Helmet} from 'react-helmet'
 
 function CategoryAll() {
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>View By Categories!</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
     const category_name = useParams().category
     console.log(category_name)
     const { data, isLoading } = useQuery({
         queryKey: ['crafts-by-category'],
         queryFn: async () => {
-            const result = await axios.post('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-craft-by-category/' + category_name)
+            const result = await axios.post('https://assignment-10-server-one-lake.vercel.app/get-craft-by-category/' + category_name)
             return result.data
         },//end use query
         onSuccess: () => {

@@ -5,9 +5,15 @@ import {
     useQuery,
     useQueryClient,
 } from '@tanstack/react-query'
+import {Helmet} from 'react-helmet'
 
 
 function ViewDetails() {
+<Helmet>
+                <meta charSet="utf-8" />
+                <title>Craft Details</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
     const id = useParams().id
     const queryClient = useQueryClient()
 
@@ -15,7 +21,8 @@ function ViewDetails() {
     const { data, isLoading } = useQuery({
         queryKey: ['craft'],
         queryFn: async () => {
-            const result = await axios(`https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-craft/${id}`)
+            //https://assignment-10-server-36xvk9846-bishawjit-kumar-deys-projects.vercel.app/
+            const result = await axios(`https://assignment-10-server-one-lake.vercel.app/get-craft/${id}`)
             return result.data
         },
         onSuccess:()=>{

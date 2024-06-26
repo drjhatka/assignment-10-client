@@ -6,19 +6,26 @@ import {
     useQueryClient,
 
 } from '@tanstack/react-query'
+import {Helmet} from "react-helmet";
 import CraftCard from './CraftCard'
 import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
 import SubcategoryCard from './SubcategoryCard'
 
 function Home() {
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Kumar Para Home</title>
+                {/* <link rel="canonical" href="http://mysite.com/example" /> */}
+            </Helmet>
     const queryClient = useQueryClient()
     const [categories, setCategories] = useState()
     const [seeAll, setSeeAll] = useState(false)
     const { data, isLoading } = useQuery({
         queryKey: ['crafts'],
         queryFn: async () => {
-            const result = await axios.get('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-all')
+            //https://assignment-10-server-36xvk9846-bishawjit-kumar-deys-projects.vercel.app/
+            const result = await axios.get('https://assignment-10-server-one-lake.vercel.app/get-all')
             return result.data
         },//end use query
         onSuccess: () => {
@@ -29,7 +36,7 @@ function Home() {
     const { categoryData } = useQuery({
         queryKey: 'category-list',
         queryFn: async () => {
-            const result = await axios.get('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-categories')
+            const result = await axios.get('https://assignment-10-server-one-lake.vercel.app/get-categories')
             setCategories(result.data)
             console.log('Cat=> ', result.data)
             return result.data
