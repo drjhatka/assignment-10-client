@@ -1,8 +1,13 @@
-# React + Vite
+# Welcome to KumarPara!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+All in one place for all arts and crafts Item such as
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Earthenware
+* Ceramics
+* Woodenware
+* Stoneware
+* Porcelin
+* Home Decors
+# All Such products are available at our live site  --> 
+check out today for your needs.......
+https://assignment-10-client-6d815.web.app/
