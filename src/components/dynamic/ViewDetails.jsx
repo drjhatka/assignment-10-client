@@ -15,7 +15,7 @@ function ViewDetails() {
     const { data, isLoading } = useQuery({
         queryKey: ['craft'],
         queryFn: async () => {
-            const result = await axios(`http://localhost:5000/get-craft/${id}`)
+            const result = await axios(`https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-craft/${id}`)
             return result.data
         },
         onSuccess:()=>{

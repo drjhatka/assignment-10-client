@@ -11,7 +11,7 @@ function UpdateCraft() {
     const { data, isLoading } = useQuery({
         queryKey: ['get-craft'],
         queryFn: async () => {
-            const result = await axios.get(`http://localhost:5000/get-craft/${id}`)
+            const result = await axios.get(`https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-craft/${id}`)
             return result.data
         }//end use query
     })
@@ -31,8 +31,8 @@ function UpdateCraft() {
             event.target.in_stock.value,//9      
             event.target.customization.value,//10      
         ]
-        console.log('ID ',id)
-        axios.put(`http://localhost:5000/update-craft/${id}`, {
+        
+        axios.put(`https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/update-craft/${id}`, {
             image_url: inputValues[0],
             item_name: inputValues[1],
             subcategory: inputValues[2],

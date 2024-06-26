@@ -3,19 +3,19 @@ import axios from 'axios'
 import {
     useQuery,
     useQueryClient,
-
 } from '@tanstack/react-query'
 import {Link} from 'react-router-dom'
 import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
 import CategoryCard from './CategoryCard';
+
 function CategoryAll() {
     const category_name = useParams().category
     console.log(category_name)
     const { data, isLoading } = useQuery({
         queryKey: ['crafts-by-category'],
         queryFn: async () => {
-            const result = await axios.post('http://localhost:5000/get-craft-by-category/' + category_name)
+            const result = await axios.post('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-craft-by-category/' + category_name)
             return result.data
         },//end use query
         onSuccess: () => {

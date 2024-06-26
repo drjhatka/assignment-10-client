@@ -18,7 +18,7 @@ function AddCraft() {
             event.target.customization.value,//10      
         ]
         // console.log(inputValues)
-        axios.post('http://localhost:5000/add-craft', {
+        axios.post('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/add-craft', {
             image_url: inputValues[0],
             item_name: inputValues[1],
             subcategory: inputValues[2],

@@ -16,7 +16,7 @@ function MyAddList() {
     const { data, isLoading } = useQuery({
         queryKey: ['add-list', setLoadedData],
         queryFn: async () => {
-            const result = await axios.post('http://localhost:5000/view-addlist', {
+            const result = await axios.post('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/view-addlist', {
                 user_email: user.email
             })
             setLoadedData(result.data)
@@ -35,7 +35,7 @@ function MyAddList() {
         mutationKey: ['filter', setLoadedData, customization],
 
         mutationFn: async () => {
-            const result = await axios.post('http://localhost:5000/view-filterlist', {
+            const result = await axios.post('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/view-filterlist', {
                 customization: customization,
                 user_email: user.email
             })

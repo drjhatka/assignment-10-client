@@ -18,7 +18,7 @@ function Home() {
     const { data, isLoading } = useQuery({
         queryKey: ['crafts'],
         queryFn: async () => {
-            const result = await axios.get('http://localhost:5000/get-all')
+            const result = await axios.get('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-all')
             return result.data
         },//end use query
         onSuccess: () => {
@@ -29,7 +29,7 @@ function Home() {
     const { categoryData } = useQuery({
         queryKey: 'category-list',
         queryFn: async () => {
-            const result = await axios.get('http://localhost:5000/get-categories')
+            const result = await axios.get('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-categories')
             setCategories(result.data)
             console.log('Cat=> ', result.data)
             return result.data

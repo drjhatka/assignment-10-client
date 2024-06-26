@@ -8,6 +8,7 @@ import 'swiper/css/effect-fade'
 import {Link} from 'react-router-dom'
 import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
+
 function Banner({crafts, isLoading}) {
     SwiperCore.use([Autoplay, EffectFade]);
     

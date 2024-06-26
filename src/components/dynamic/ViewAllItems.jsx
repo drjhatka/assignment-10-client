@@ -11,7 +11,7 @@ function ViewAllItems() {
     const { data, isLoading } = useQuery({
         queryKey: ['crafts-all'],
         queryFn: async () => {
-            const result = await axios.get('http://localhost:5000/get-all')
+            const result = await axios.get('https://assignment-10-server-3tp0yxj1y-bishawjit-kumar-deys-projects.vercel.app/get-all')
             //console.log(result.data)
             return result.data
         }
