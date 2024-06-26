@@ -30,7 +30,7 @@ function Navbar() {
         navigate('/login')
     }//end event handler
     return (
-        <div id='nav_container' style={{fontFamily:'georgia'}} className="navbar sticky top-0 bg-slate-50 z-50 shadow-md border-2 rounded-b-md pb-2">
+        <div id='nav_container' style={{fontFamily:'georgia'}} className="navbar mb-2 sticky top-0 bg-slate-50 z-50 shadow-md border-2 rounded-b-md pb-2">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
