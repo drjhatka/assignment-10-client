@@ -42,7 +42,7 @@ function Navbar() {
             <div className="navbar-center text-xl hidden md:flex">
                 <ul className="menu font-semibold  menu-horizontal px-1 lg:gap-4">
                     <li><NavLink to='/'>Home</NavLink></li>
-                    <li>
+                    {/* <li>
                         <details>
                             <summary >Categories </summary>
                             <ul className="p-2 z-10">
@@ -51,7 +51,7 @@ function Navbar() {
                                 <li><Link to='/'>Porcelin</Link></li>
                             </ul>
                         </details>
-                    </li>
+                    </li> */}
                     <li><NavLink to='/view-all-items'>View All Items</NavLink></li>
                     {
                         user ?
