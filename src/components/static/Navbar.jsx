@@ -1,20 +1,36 @@
 import { NavLink, Link } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { GiClothJar } from "react-icons/gi";
 import { AuthContext } from '../auth/AuthProvider'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'react-tooltip'
 function Navbar() {
     const { user, logOut } = useContext(AuthContext)
+    const [lightTheme, setLightTheme] = useState(false)
     console.log(user)
     const navigate = useNavigate()
 
+    const changeTheme = ()=>{
+        setLightTheme(!lightTheme)
+        if(!lightTheme){ 
+            document.body.style.background = 'gray'
+            document.getElementById('nav_container').style.background ='black'
+            document.getElementById('nav_container').style.color ='white'
+        }
+        else{
+            document.body.style.background = 'whitesmoke'
+            document.getElementById('nav_container').style.background ='white'
+            document.getElementById('nav_container').style.color ='black'
+
+
+        }
+    }
     const signOut = () => {
         logOut()
         navigate('/login')
     }//end event handler
     return (
-        <div style={{fontFamily:'georgia'}} className="navbar sticky top-0 bg-slate-50 z-50 shadow-md border-2 rounded-b-md pb-2">
+        <div id='nav_container' style={{fontFamily:'georgia'}} className="navbar sticky top-0 bg-slate-50 z-50 shadow-md border-2 rounded-b-md pb-2">
             <div className="navbar-start ">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -58,7 +74,7 @@ function Navbar() {
                             <>
                                 <li><NavLink to='/add-craft'>Add Product</NavLink></li>
                                 <li><NavLink to='/view-addlist'>My Add List </NavLink></li>
-                                <input type="checkbox" className="toggle" defaultChecked />
+                                <li className='border-2 flex justify-center items-center'><span className='text-xs'>{lightTheme ?'Light':'Dark'}</span> <input onClick={changeTheme} type="checkbox" className={lightTheme ?'toggle':'toggle bg-slate-500'}  /></li>
 
                             </>
                             :
