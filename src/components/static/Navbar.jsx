@@ -22,14 +22,14 @@ function Navbar() {
                     </div>
                     <ul tabIndex={0} className="menu menu-md text-2xl dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
                         <li ><NavLink to='/'>Home</NavLink></li>
-                        <li>
+                        {/* <li>
                             <a>View Categories</a>
                             <ul className="p-2 z-auto">
                                 <li><Link >Earthenware</Link></li>
                                 <li><Link>Ceramic</Link></li>
                                 <li><Link>Porcelin</Link></li>
                             </ul>
-                        </li>
+                        </li> */}
                         <li><NavLink to='/view-all-items'>View All Items</NavLink></li>
                         <li><NavLink to='/add-product'>Add Product</NavLink></li>
                         <li><NavLink to='/product-list'>My Product List</NavLink></li>
@@ -58,6 +58,8 @@ function Navbar() {
                             <>
                                 <li><NavLink to='/add-craft'>Add Product</NavLink></li>
                                 <li><NavLink to='/view-addlist'>My Add List </NavLink></li>
+                                <input type="checkbox" className="toggle" defaultChecked />
+
                             </>
                             :
                             <>
