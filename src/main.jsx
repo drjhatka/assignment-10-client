@@ -22,6 +22,7 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import MyAddList from './components/dynamic/MyAddList.jsx';
 import UpdateCraft from './components/dynamic/UpdateCraft.jsx'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import CategoryAll from './components/dynamic/CategoryAll.jsx';
 
 
 const queryClient = new QueryClient()
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: '/view-addlist',
         element: <PrivateRoute><MyAddList /></PrivateRoute>
+      },
+      {
+        path:'/category-detail/:category',
+        element:<CategoryAll/>
       },
       {
         path: '/update-craft/:id',
