@@ -16,11 +16,14 @@ function Navbar() {
             document.body.style.background = 'gray'
             document.getElementById('nav_container').style.background ='black'
             document.getElementById('nav_container').style.color ='white'
+            document.getElementById('email').style.color ='white'
+
         }
         else{
             document.body.style.background = 'whitesmoke'
             document.getElementById('nav_container').style.background ='white'
             document.getElementById('nav_container').style.color ='black'
+            document.getElementById('email').style.color ='black'
 
 
         }
@@ -47,8 +50,8 @@ function Navbar() {
                             </ul>
                         </li> */}
                         <li><NavLink to='/view-all-items'>View All Items</NavLink></li>
-                        <li><NavLink to='/add-product'>Add Product</NavLink></li>
-                        <li><NavLink to='/product-list'>My Product List</NavLink></li>
+                        <li><NavLink to='/add-craft'>Add Product</NavLink></li>
+                        <li><NavLink to='/view-addlist'>My Product List</NavLink></li>
                     </ul>
                 </div>
                 <div>
@@ -88,7 +91,7 @@ function Navbar() {
             {
                 user &&
                 <div className="navbar-end gap-4">
-                    <div><span className='px-4 py-2 hidden lg:block border-2 rounded-md text-blue-700 font-semibold text-xs shadow-md'>{user?.email}</span></div>
+                    <div><span id='email' className='px-4 py-2 hidden lg:block border-2 rounded-md text-blue-700 font-semibold text-xs shadow-md'>{user?.email}</span></div>
 
                     <div className="dropdown dropdown-end z-10">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

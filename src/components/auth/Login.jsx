@@ -3,6 +3,9 @@ import { AuthContext } from './AuthProvider'
 import {Link, useNavigate} from 'react-router-dom'
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import Swal from 'sweetalert2'
+import axios from 'axios'
+// { validateInput } from "../Auth/Utilities/LoginValidation";
+
 //import 'dotenv/config'
 function Login() {
     const {externalLogin, userLogIn } = useContext(AuthContext)
@@ -10,9 +13,12 @@ function Login() {
     const gitProvider = new GithubAuthProvider();
     const navigate = useNavigate()
 
-    const handleLogin=()=>{
+    const handleLogin= async ()=>{
         event.preventDefault()
-        userLogIn(event.target.email.value,event.target.password.value).then(result=>{
+        axios.post('/jwt',{email:event.target.email.value})
+
+        userLogIn(event.target.email.value, event.target.password.value).then(result=>{
+           
             setTimeout(()=>Swal.fire({
                 title: 'Login Success!',
                 text: 'User Logged In Successfully',
@@ -29,10 +35,12 @@ function Login() {
                 confirmButtonText: 'Ok'
             })
         })
+
     }//end native login handler
 
     const handleExternalLogin= (provider)=>{
         externalLogin(provider).then(result=>{
+
             setTimeout(()=>Swal.fire({
                 title: 'Login Success!',
                 text: 'User Logged In Successfully',

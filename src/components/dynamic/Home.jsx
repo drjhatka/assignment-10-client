@@ -12,7 +12,9 @@ import Lottie from "lottie-react";
 import sandclock from "../../../animation.json";
 import SubcategoryCard from './SubcategoryCard'
 
+
 function Home() {
+  
     <Helmet>
                 <meta charSet="utf-8" />
                 <title>Kumar Para Home</title>
