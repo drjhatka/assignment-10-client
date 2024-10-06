@@ -32,24 +32,31 @@ function ViewAllItems() {
         //e.preventDefault()
         //console.log('select hit', craftData.sort((a, b) => parseInt(a.price)-parseInt(b.price)) )
         const value = e.target.value
-        if(value=='price'){
-            console.log('Price hit')
-            setCraftData(craftData.filter((a) => a.subcategory=='ceramic' ));
-            console.log(craftData)
+        if(value=='clear'){
+            setCraftData(data)
         }
+        else{
+            console.log('else', value)
+            setCraftData(data);
+            setCraftData(data.filter((a) => a.subcategory==value ))
+
+        }
+        
     }
     return (
         <div>
             <div className='text-center'>
                 <div className='py-4 border-2 bg-slate-50' >
-                    <label htmlFor="filter">Sort Craft Collection</label>
+                    <label htmlFor="filter" className='text-xl font-bold text-blue-700'>Filter Craft Collection</label>
 
                 </div>
                 <div className='py-4 border-b-2'>
                     <select onChange={(e)=>handleSort(e)} className='border-2 px-5 py-4 rounded-xl bg-red-800 text-white font-bold' name="filter" id="filter">
                         
-                        <option value="price">Sort By Price</option>
-                        <option value="rating">Sort By Rating</option>
+                        <option value="clear">Clear Filter</option>
+                        <option value="ceramic"> Ceramic</option>
+                        <option value="stoneware">StoneWare</option>    
+                        <option value="home_decor">Home Decor</option>    
                     </select>
 
                 </div>
@@ -69,7 +76,7 @@ function ViewAllItems() {
                     <tbody className=''>
                         {
                             isLoading ? <div className='flex mx-auto justify-center w-full'><Lottie className=' h-56 text-center w-full' animationData={sandclock} loop={true} /></div> :
-                                craftData.map(craft => <TableData craft={craft} key={craft._id}></TableData>)
+                                craftData?.map(craft => <TableData craft={craft} key={craft._id}></TableData>)
                         }
 
 
