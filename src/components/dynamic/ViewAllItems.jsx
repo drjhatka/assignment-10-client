@@ -13,10 +13,10 @@ function ViewAllItems() {
     <Helmet>
         <meta charSet="utf-8" />
         <title>View All Items</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+       
     </Helmet>
  
-    const [craftData, setCraftData] = useState([])
+    const [craftData, setCraftData] = useState()
     const { data, isLoading } = useQuery({
         queryKey: ['crafts-all'],
         queryFn: async () => {
@@ -28,14 +28,15 @@ function ViewAllItems() {
     })
     //console.log(data)
 
-    const handleSort= ()=>{
+    const handleSort= (e)=>{
+        //e.preventDefault()
         //console.log('select hit', craftData.sort((a, b) => parseInt(a.price)-parseInt(b.price)) )
-        if(event.target.value=='price'){
+        const value = e.target.value
+        if(value=='price'){
             console.log('Price hit')
-            setCraftData(craftData.sort((a, b) => parseInt(a.price)-parseInt(b.price)));
-            console.log(craftData[0])
+            setCraftData(craftData.filter((a) => a.subcategory=='ceramic' ));
+            console.log(craftData)
         }
-        //data.filter()
     }
     return (
         <div>
@@ -45,8 +46,8 @@ function ViewAllItems() {
 
                 </div>
                 <div className='py-4 border-b-2'>
-                    <select onChange={handleSort} className='border-2 px-5 py-4 rounded-xl bg-red-800 text-white font-bold' name="filter" id="filter">
-                        <option value="all">Clear Sort</option>
+                    <select onChange={(e)=>handleSort(e)} className='border-2 px-5 py-4 rounded-xl bg-red-800 text-white font-bold' name="filter" id="filter">
+                        
                         <option value="price">Sort By Price</option>
                         <option value="rating">Sort By Rating</option>
                     </select>
@@ -66,8 +67,6 @@ function ViewAllItems() {
                     </thead>
 
                     <tbody className=''>
-
-
                         {
                             isLoading ? <div className='flex mx-auto justify-center w-full'><Lottie className=' h-56 text-center w-full' animationData={sandclock} loop={true} /></div> :
                                 craftData.map(craft => <TableData craft={craft} key={craft._id}></TableData>)
